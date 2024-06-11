@@ -1,7 +1,7 @@
 <?php // Conexión con la base de datos en PDO.
 try // Intenta la conexión con MariaDB, se necesita una base de datos llamada macs con una tabla llamada mac que contiene todas las macs de todos los fabricantes.
 {
-	$conn = new PDO('mariadb:host=localhost;dbname=macs', "root", "");
+	$conn = new PDO('mysql:host=localhost;port=3307;dbname=macs', "root", ""); // Conexión con el SGBD en el puerto 3307(MariaDB en WAMP)
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch(PDOException $e) // En caso de error

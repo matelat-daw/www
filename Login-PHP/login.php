@@ -1,10 +1,11 @@
-<?php // Documento de script php
+<?php
+include "includes/conn.php";
 if (isset($_POST['email'])) // Si recibe datos por POST en la variable array $_POST["email"].
 {
 	$email = $_POST['email']; // Asigna a la variable $email el contenido del array $_POST["email"].
 	$pass = $_POST['pass']; // Lo mismo con $_POST["pass"].
 
-	$sql = "SELECT * FROM user WHERE email='$emal';";
+	$sql = "SELECT * FROM user WHERE email='$email';";
 	$stmt = $conn->prepare($sql);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0)
@@ -21,6 +22,9 @@ if (isset($_POST['email'])) // Si recibe datos por POST en la variable array $_P
 	}
 	else
 	{
+		$email = "No Registered";
+		include "includes/header.php";
+		include "includes/modal_index.html";
 		echo "<script>toast(1, 'No Hay Datos', 'El E-mail Introducido no Está Registrado en la Base de Datos.');</script>";
 	}
 }
